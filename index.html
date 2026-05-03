@@ -3,388 +3,1180 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AlloShop — La référence puffs du 49</title>
-  <meta name="description" content="AlloShop — Commandez vos puffs rapidement dans le Maine-et-Loire. Qualité garantie, livraison rapide." />
+  <meta name="description" content="AlloShop — Les meilleures puffs du Maine-et-Loire. JNR 16K, 23K, 42K, Razzbar 40K. Commande rapide par WhatsApp." />
+  <title>AlloShop — Puffs Premium | Angers · Saumur</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg:        #0a0a0a;
-      --surface:   #141414;
-      --border:    rgba(255,255,255,0.08);
-      --accent:    #7c3aed;
-      --accent2:   #a855f7;
-      --text:      #f5f5f5;
-      --muted:     #888;
-      --radius:    16px;
-    }
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+/* ─── VARIABLES ─── */
+:root {
+  --bg:       #07070f;
+  --bg2:      #0d0d1a;
+  --surface:  #111122;
+  --card:     rgba(255,255,255,0.04);
+  --border:   rgba(255,255,255,0.07);
+  --border2:  rgba(255,255,255,0.12);
+  --p1:       #8b5cf6;
+  --p2:       #d946ef;
+  --grad:     linear-gradient(135deg, #8b5cf6 0%, #d946ef 100%);
+  --gold:     #f59e0b;
+  --cyan:     #22d3ee;
+  --text:     #f1f5f9;
+  --muted:    #64748b;
+  --muted2:   #94a3b8;
+  --radius:   18px;
+  --radius-sm:10px;
+  --shadow:   0 8px 32px rgba(0,0,0,0.5);
+  --wa:       #25d366;
+  --wa-dark:  #128c7e;
+}
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
-    body {
-      font-family: 'Inter', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100dvh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 48px 20px 80px;
-    }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100dvh;
+  overflow-x: hidden;
+}
 
-    /* ── Bruit de fond subtil ── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 0;
-    }
+/* Grain overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
 
-    /* ── Lueur centrale ── */
-    body::after {
-      content: '';
-      position: fixed;
-      top: -200px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(124,58,237,0.18) 0%, transparent 70%);
-      pointer-events: none;
-      z-index: 0;
-    }
+/* ─── TYPO ─── */
+h1, h2, h3, h4 {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+p { line-height: 1.65; }
+a { text-decoration: none; color: inherit; }
 
-    .wrapper {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      max-width: 480px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0;
-    }
+/* ─── UTILS ─── */
+.grad-text {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.section { padding: 96px 0; }
+.container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 99px;
+}
+.badge--purple {
+  background: rgba(139,92,246,0.15);
+  border: 1px solid rgba(139,92,246,0.3);
+  color: #a78bfa;
+}
+.badge--gold {
+  background: rgba(245,158,11,0.12);
+  border: 1px solid rgba(245,158,11,0.3);
+  color: var(--gold);
+}
+.section-header { text-align: center; margin-bottom: 64px; }
+.section-header h2 { font-size: clamp(28px, 5vw, 42px); margin-top: 16px; }
+.section-header p { color: var(--muted2); font-size: 16px; margin-top: 12px; max-width: 480px; margin-left: auto; margin-right: auto; }
 
-    /* ── Avatar ── */
-    .avatar {
-      width: 96px;
-      height: 96px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 36px;
-      font-weight: 900;
-      color: #fff;
-      letter-spacing: -2px;
-      box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px var(--accent);
-      margin-bottom: 20px;
-      user-select: none;
-    }
+/* ─── BUTTONS ─── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 14px 28px;
+  border-radius: 99px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.btn--primary {
+  background: var(--grad);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(139,92,246,0.4);
+}
+.btn--primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(139,92,246,0.55); }
+.btn--outline {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border2);
+}
+.btn--outline:hover { background: rgba(255,255,255,0.06); transform: translateY(-2px); }
+.btn--wa {
+  background: var(--wa);
+  color: #fff;
+  font-size: 16px;
+  padding: 16px 32px;
+  box-shadow: 0 4px 24px rgba(37,211,102,0.35);
+}
+.btn--wa:hover { transform: translateY(-2px); box-shadow: 0 8px 36px rgba(37,211,102,0.5); background: #20c05a; }
+.btn--wa svg { width: 22px; height: 22px; flex-shrink: 0; }
 
-    /* ── Nom & bio ── */
-    .name {
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      text-align: center;
-    }
+/* ─── AGE GATE ─── */
+.age-gate {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  transition: opacity 0.4s, visibility 0.4s;
+}
+.age-gate.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 
-    .handle {
-      font-size: 14px;
-      color: var(--muted);
-      margin-top: 4px;
-      text-align: center;
-    }
+.age-gate__glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 50% 40%, rgba(139,92,246,0.2) 0%, transparent 70%);
+  pointer-events: none;
+}
+.age-gate__box {
+  position: relative;
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  z-index: 1;
+}
+.age-gate__brand {
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 32px;
+}
+.age-gate__icon {
+  font-size: 56px;
+  margin-bottom: 24px;
+  display: block;
+}
+.age-gate__title {
+  font-size: clamp(32px, 7vw, 48px);
+  margin-bottom: 16px;
+}
+.age-gate__sub {
+  color: var(--muted2);
+  font-size: 15px;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+.age-gate__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.age-gate__legal {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 28px;
+  line-height: 1.5;
+}
 
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      background: rgba(124,58,237,0.15);
-      border: 1px solid rgba(124,58,237,0.3);
-      color: var(--accent2);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      padding: 4px 10px;
-      border-radius: 99px;
-      margin-top: 12px;
-    }
+/* ─── NICO STRIP ─── */
+.nico-strip {
+  background: rgba(239,68,68,0.08);
+  border-bottom: 1px solid rgba(239,68,68,0.15);
+  padding: 10px 24px;
+  text-align: center;
+  font-size: 12px;
+  color: #f87171;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  display: none;
+}
+.nico-strip.visible { display: block; }
 
-    .bio {
-      font-size: 14px;
-      color: var(--muted);
-      text-align: center;
-      line-height: 1.6;
-      margin-top: 14px;
-      max-width: 320px;
-    }
+/* ─── NAV ─── */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.3s, backdrop-filter 0.3s;
+}
+.nav.scrolled {
+  background: rgba(7,7,15,0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+}
+.nav__brand {
+  font-family: 'Manrope', sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.nav__brand em {
+  font-style: normal;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.nav__actions { display: flex; align-items: center; gap: 12px; }
+.nav__wa {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(37,211,102,0.12);
+  border: 1px solid rgba(37,211,102,0.25);
+  color: var(--wa);
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 9px 18px;
+  border-radius: 99px;
+  transition: all 0.2s;
+}
+.nav__wa:hover { background: rgba(37,211,102,0.2); }
+.nav__wa svg { width: 16px; height: 16px; }
 
-    /* ── Séparateur ── */
-    .divider {
-      width: 100%;
-      height: 1px;
-      background: var(--border);
-      margin: 32px 0 28px;
-    }
+/* ─── HERO ─── */
+.hero {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  padding: 120px 24px 80px;
+  overflow: hidden;
+}
+.hero__glow-1 {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 500px;
+  background: radial-gradient(ellipse, rgba(139,92,246,0.25) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero__glow-2 {
+  position: absolute;
+  bottom: 0;
+  left: 30%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(217,70,239,0.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero__content { position: relative; z-index: 1; max-width: 720px; }
+.hero__eyebrow { margin-bottom: 24px; }
+.hero__title {
+  font-size: clamp(40px, 8vw, 80px);
+  margin-bottom: 24px;
+}
+.hero__sub {
+  font-size: clamp(16px, 2vw, 19px);
+  color: var(--muted2);
+  margin-bottom: 44px;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.hero__ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.hero__scroll {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  animation: bounce 2s infinite;
+}
+.hero__scroll-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, transparent, var(--muted));
+}
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
 
-    /* ── Grille de liens ── */
-    .links {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      width: 100%;
-    }
+/* ─── STATS BAR ─── */
+.stats-bar {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg2);
+  padding: 28px 0;
+}
+.stats-bar__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+}
+.stat {
+  text-align: center;
+  padding: 0 24px;
+  border-right: 1px solid var(--border);
+}
+.stat:last-child { border-right: none; }
+.stat__number {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 900;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.stat__label { font-size: 13px; color: var(--muted2); margin-top: 4px; font-weight: 500; }
 
-    .link-btn {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 16px 20px;
-      text-decoration: none;
-      color: var(--text);
-      transition: background 0.2s, border-color 0.2s, transform 0.15s;
-      cursor: pointer;
-    }
+/* ─── PRODUCTS ─── */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
 
-    .link-btn:hover {
-      background: #1c1c1c;
-      border-color: rgba(255,255,255,0.15);
-      transform: translateY(-2px);
-    }
+.product-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+.product-card:hover {
+  border-color: rgba(139,92,246,0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 48px rgba(139,92,246,0.15);
+}
 
-    .link-btn:active {
-      transform: translateY(0);
-    }
+.product-card__img-wrap {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: var(--surface);
+}
+.product-card__img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 16px;
+  transition: transform 0.4s;
+}
+.product-card:hover .product-card__img-wrap img { transform: scale(1.05); }
 
-    /* Variante accent (CTA principal) */
-    .link-btn.primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      border-color: transparent;
-      box-shadow: 0 4px 24px rgba(124,58,237,0.35);
-    }
+.product-card__range {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(7,7,15,0.8);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border2);
+  border-radius: 99px;
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  color: var(--text);
+}
 
-    .link-btn.primary:hover {
-      background: linear-gradient(135deg, #6d28d9, #9333ea);
-      filter: brightness(1.05);
-    }
+.product-card__body { padding: 20px 24px; flex: 1; display: flex; flex-direction: column; }
+.product-card__name {
+  font-family: 'Manrope', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+.product-card__desc { font-size: 13px; color: var(--muted2); margin-bottom: 16px; }
 
-    .link-btn.whatsapp {
-      background: linear-gradient(135deg, #075e54, #128c7e);
-      border-color: transparent;
-      box-shadow: 0 4px 20px rgba(7,94,84,0.3);
-    }
+.product-card__price {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.product-card__amount {
+  font-family: 'Manrope', sans-serif;
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--gold);
+}
+.product-card__puffs {
+  font-size: 12px;
+  color: var(--muted2);
+  font-weight: 600;
+  background: rgba(255,255,255,0.05);
+  padding: 4px 10px;
+  border-radius: 99px;
+  border: 1px solid var(--border);
+}
 
-    .link-btn.whatsapp:hover {
-      filter: brightness(1.1);
-    }
+/* Flavors */
+.flavors { margin-bottom: 24px; flex: 1; }
+.flavors__title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.flavors__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.flavor-tag {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 99px;
+  background: rgba(139,92,246,0.1);
+  border: 1px solid rgba(139,92,246,0.2);
+  color: #c4b5fd;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.flavor-tag:hover {
+  background: rgba(139,92,246,0.25);
+  border-color: rgba(139,92,246,0.5);
+  color: #fff;
+}
+.flavors__more {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 500;
+  padding: 5px 12px;
+  border-radius: 99px;
+  background: rgba(255,255,255,0.04);
+  border: 1px dashed var(--border2);
+}
 
-    .icon {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: rgba(255,255,255,0.08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      font-size: 20px;
-    }
+.product-card__cta { margin-top: auto; }
+.product-card__cta .btn { width: 100%; }
 
-    .link-btn.primary .icon,
-    .link-btn.whatsapp .icon {
-      background: rgba(255,255,255,0.15);
-    }
+/* ─── HOW TO ORDER ─── */
+.how-to { background: var(--bg2); }
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  position: relative;
+}
+.steps-grid::before {
+  content: '';
+  position: absolute;
+  top: 36px;
+  left: calc(16.66% + 16px);
+  right: calc(16.66% + 16px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border2), var(--border2), transparent);
+}
+.step { text-align: center; position: relative; }
+.step__num {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--grad);
+  font-family: 'Manrope', sans-serif;
+  font-size: 22px;
+  font-weight: 900;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  box-shadow: 0 4px 24px rgba(139,92,246,0.4);
+}
+.step__title { font-family: 'Manrope', sans-serif; font-size: 16px; font-weight: 800; margin-bottom: 8px; }
+.step__desc { font-size: 14px; color: var(--muted2); }
 
-    .link-text {
-      flex: 1;
-    }
+/* ─── REVIEWS ─── */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+.review-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  transition: border-color 0.2s;
+}
+.review-card:hover { border-color: rgba(139,92,246,0.25); }
+.review-card__header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.review-card__author { display: flex; align-items: center; gap: 12px; }
+.review-card__avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--grad);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  color: #fff;
+  flex-shrink: 0;
+}
+.review-card__name { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 15px; }
+.review-card__date { font-size: 12px; color: var(--muted); margin-top: 2px; }
+.stars { color: var(--gold); font-size: 15px; letter-spacing: 2px; }
+.review-card__text { font-size: 14px; color: var(--muted2); line-height: 1.65; }
+.review-card__product {
+  margin-top: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #a78bfa;
+  font-weight: 600;
+  background: rgba(139,92,246,0.1);
+  padding: 4px 10px;
+  border-radius: 99px;
+}
 
-    .link-title {
-      font-size: 15px;
-      font-weight: 700;
-    }
+/* ─── FAQ ─── */
+.faq { background: var(--bg2); }
+.faq-list { max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+.faq-item {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+.faq-item__q {
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: left;
+  padding: 20px 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  transition: color 0.2s;
+}
+.faq-item__q:hover { color: #a78bfa; }
+.faq-item__icon { font-size: 20px; transition: transform 0.3s; flex-shrink: 0; }
+.faq-item.open .faq-item__icon { transform: rotate(45deg); }
+.faq-item__a {
+  font-size: 14px;
+  color: var(--muted2);
+  line-height: 1.7;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s;
+  padding: 0 24px;
+}
+.faq-item.open .faq-item__a { max-height: 200px; padding: 0 24px 20px; }
 
-    .link-sub {
-      font-size: 12px;
-      color: rgba(255,255,255,0.55);
-      margin-top: 2px;
-    }
+/* ─── CTA SECTION ─── */
+.cta-section {
+  text-align: center;
+  padding: 96px 24px;
+  position: relative;
+  overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 70% at 50% 50%, rgba(139,92,246,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta-section__content { position: relative; z-index: 1; }
+.cta-section h2 { font-size: clamp(28px, 5vw, 52px); margin: 16px 0 20px; }
+.cta-section p { color: var(--muted2); font-size: 16px; margin-bottom: 40px; }
 
-    .link-btn.primary .link-sub,
-    .link-btn.whatsapp .link-sub {
-      color: rgba(255,255,255,0.7);
-    }
+/* ─── FOOTER ─── */
+.footer {
+  border-top: 1px solid var(--border);
+  background: var(--bg);
+  padding: 40px 24px;
+  text-align: center;
+}
+.footer__brand {
+  font-family: 'Manrope', sans-serif;
+  font-size: 18px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  margin-bottom: 12px;
+}
+.footer__brand em {
+  font-style: normal;
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.footer__links { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px; }
+.footer__links a { font-size: 14px; color: var(--muted2); transition: color 0.2s; }
+.footer__links a:hover { color: var(--text); }
+.footer__legal { font-size: 12px; color: var(--muted); }
 
-    .arrow {
-      color: var(--muted);
-      font-size: 18px;
-      flex-shrink: 0;
-    }
+/* ─── WHATSAPP STICKY ─── */
+.wa-sticky {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 500;
+  width: 56px;
+  height: 56px;
+  background: var(--wa);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.45);
+  transition: transform 0.2s, box-shadow 0.2s;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.8);
+}
+.wa-sticky.visible { opacity: 1; pointer-events: all; transform: scale(1); }
+.wa-sticky:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(37,211,102,0.6); }
+.wa-sticky svg { width: 28px; height: 28px; }
 
-    .link-btn.primary .arrow,
-    .link-btn.whatsapp .arrow {
-      color: rgba(255,255,255,0.6);
-    }
-
-    /* ── Section sociale ── */
-    .section-label {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-align: center;
-      margin: 32px 0 16px;
-    }
-
-    .social-row {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-    }
-
-    .social-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      text-decoration: none;
-      font-size: 22px;
-      transition: background 0.2s, transform 0.15s;
-    }
-
-    .social-btn:hover {
-      background: #1c1c1c;
-      transform: translateY(-2px);
-    }
-
-    /* ── Footer ── */
-    .footer {
-      margin-top: 48px;
-      font-size: 12px;
-      color: rgba(255,255,255,0.2);
-      text-align: center;
-      letter-spacing: 0.3px;
-    }
-
-    /* ── Avertissement âge ── */
-    .age-warning {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(239,68,68,0.08);
-      border: 1px solid rgba(239,68,68,0.2);
-      border-radius: 10px;
-      padding: 10px 16px;
-      font-size: 12px;
-      color: #f87171;
-      font-weight: 500;
-      margin-top: 28px;
-      width: 100%;
-      text-align: center;
-      justify-content: center;
-    }
-  </style>
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .section { padding: 72px 0; }
+  .steps-grid { grid-template-columns: 1fr; gap: 40px; }
+  .steps-grid::before { display: none; }
+  .stats-bar__grid { grid-template-columns: repeat(3, 1fr); }
+  .hero__ctas { flex-direction: column; align-items: center; }
+  .btn--wa { width: 100%; max-width: 320px; }
+}
+@media (max-width: 480px) {
+  .stat__number { font-size: 22px; }
+  .stat { padding: 0 12px; }
+  .product-card__body { padding: 16px; }
+  .reviews-grid { grid-template-columns: 1fr; }
+}
+</style>
 </head>
 <body>
-  <div class="wrapper">
 
-    <!-- Avatar -->
-    <div class="avatar">AS</div>
-
-    <!-- Identité -->
-    <div class="name">AlloShop</div>
-    <div class="handle">@alloshop.49</div>
-    <div class="badge">⚡ La référence puffs du 49</div>
-    <p class="bio">Commandes rapides · Qualité garantie<br>Maine-et-Loire</p>
-
-    <div class="divider"></div>
-
-    <!-- Liens principaux -->
-    <div class="links">
-
-      <!-- CTA Principal : Commander -->
-      <a class="link-btn primary" href="file:///C:/Users/marti/alloshop/index.html" target="_blank" rel="noopener">
-        <div class="icon">🛒</div>
-        <div class="link-text">
-          <div class="link-title">Commander maintenant</div>
-          <div class="link-sub">Voir tout le catalogue</div>
-        </div>
-        <div class="arrow">›</div>
-      </a>
-
-      <!-- WhatsApp -->
-      <a class="link-btn whatsapp" href="https://wa.me/33760342425" target="_blank" rel="noopener">
-        <div class="icon">💬</div>
-        <div class="link-text">
-          <div class="link-title">WhatsApp</div>
-          <div class="link-sub">Réponse rapide garantie</div>
-        </div>
-        <div class="arrow">›</div>
-      </a>
-
-      <!-- Instagram -->
-      <a class="link-btn" href="https://www.instagram.com/alloshop.49/" target="_blank" rel="noopener">
-        <div class="icon">📸</div>
-        <div class="link-text">
-          <div class="link-title">Instagram</div>
-          <div class="link-sub">Nouveautés & contenu</div>
-        </div>
-        <div class="arrow">›</div>
-      </a>
-
-      <!-- Catalogue PDF ou page produits -->
-      <a class="link-btn" href="REMPLACER_PAR_LIEN_CATALOGUE" target="_blank" rel="noopener">
-        <div class="icon">📋</div>
-        <div class="link-text">
-          <div class="link-title">Voir le catalogue complet</div>
-          <div class="link-sub">Toutes les saveurs disponibles</div>
-        </div>
-        <div class="arrow">›</div>
-      </a>
-
-      <!-- Avis clients -->
-      <a class="link-btn" href="REMPLACER_PAR_LIEN_AVIS" target="_blank" rel="noopener">
-        <div class="icon">⭐</div>
-        <div class="link-text">
-          <div class="link-title">Avis clients</div>
-          <div class="link-sub">Ce que disent nos clients</div>
-        </div>
-        <div class="arrow">›</div>
-      </a>
-
+<!-- ══ AGE GATE ══ -->
+<div class="age-gate" id="age-gate">
+  <div class="age-gate__glow"></div>
+  <div class="age-gate__box">
+    <div class="age-gate__brand">AlloShop</div>
+    <span class="age-gate__icon">🔞</span>
+    <h1 class="age-gate__title">Vérification<br><span class="grad-text">d'âge</span></h1>
+    <p class="age-gate__sub">Ce site propose des produits à base de nicotine.<br>Accès strictement réservé aux personnes majeures.</p>
+    <div class="age-gate__actions">
+      <button class="btn btn--primary" id="age-yes" style="font-size:16px;padding:18px 36px;">J'ai 18 ans ou plus</button>
+      <button class="btn btn--outline" id="age-no">J'ai moins de 18 ans</button>
     </div>
-
-    <!-- Avertissement âge légal -->
-    <div class="age-warning">
-      🔞 &nbsp;Vente réservée aux personnes majeures (+18 ans)
-    </div>
-
-    <!-- Réseaux sociaux -->
-    <div class="section-label">Suivez-nous</div>
-    <div class="social-row">
-      <a class="social-btn" href="https://www.instagram.com/alloshop.49/" target="_blank" rel="noopener" title="Instagram">📸</a>
-      <a class="social-btn" href="https://wa.me/33760342425" target="_blank" rel="noopener" title="WhatsApp">💬</a>
-      <!-- Ajouter TikTok si pertinent -->
-      <!-- <a class="social-btn" href="https://www.tiktok.com/@alloshop.49" target="_blank" rel="noopener" title="TikTok">🎵</a> -->
-    </div>
-
-    <div class="footer">AlloShop · Maine-et-Loire · 2026</div>
-
+    <p class="age-gate__legal">Art. L.3513-4 du Code de la santé publique — Vente interdite aux mineurs</p>
   </div>
+</div>
+
+<!-- ══ NICO STRIP ══ -->
+<div class="nico-strip" id="nico-strip">
+  ⚠️ Ce produit contient de la nicotine, substance hautement addictive. Déconseillé aux non-fumeurs. Interdit aux mineurs.
+</div>
+
+<!-- ══ NAV ══ -->
+<nav class="nav" id="nav">
+  <a href="#hero" class="nav__brand">ALLO<em>SHOP</em></a>
+  <div class="nav__actions">
+    <a href="https://wa.me/33760342425?text=Bonjour%20AlloShop%20!%20Je%20voudrais%20commander%20une%20puff." class="nav__wa" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.123 1.531 5.854L.057 23.428a.5.5 0 00.609.61l5.627-1.474A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.943 9.943 0 01-5.061-1.378l-.361-.214-3.742.981.998-3.648-.236-.375A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      Commander
+    </a>
+  </div>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero" id="hero">
+  <div class="hero__glow-1"></div>
+  <div class="hero__glow-2"></div>
+  <div class="hero__content">
+    <div class="hero__eyebrow">
+      <span class="badge badge--purple">⚡ La référence puffs du 49</span>
+    </div>
+    <h1 class="hero__title">
+      Les meilleures<br><span class="grad-text">puffs</span> du Maine<br>sont là.
+    </h1>
+    <p class="hero__sub">JNR 16K · 23K · 42K · Razzbar 40K. Des dizaines de saveurs, prix imbattables, livraison rapide dans tout le 49.</p>
+    <div class="hero__ctas">
+      <a href="https://wa.me/33760342425?text=Bonjour%20AlloShop%20!%20Je%20voudrais%20commander%20une%20puff." class="btn btn--wa" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.123 1.531 5.854L.057 23.428a.5.5 0 00.609.61l5.627-1.474A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.943 9.943 0 01-5.061-1.378l-.361-.214-3.742.981.998-3.648-.236-.375A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        Commander sur WhatsApp
+      </a>
+      <a href="#produits" class="btn btn--outline">Voir le catalogue</a>
+    </div>
+  </div>
+  <div class="hero__scroll">
+    <span>Scroll</span>
+    <div class="hero__scroll-line"></div>
+  </div>
+</section>
+
+<!-- ══ STATS ══ -->
+<div class="stats-bar">
+  <div class="container">
+    <div class="stats-bar__grid">
+      <div class="stat">
+        <div class="stat__number">500+</div>
+        <div class="stat__label">Clients satisfaits</div>
+      </div>
+      <div class="stat">
+        <div class="stat__number">4</div>
+        <div class="stat__label">Gammes disponibles</div>
+      </div>
+      <div class="stat">
+        <div class="stat__number">24h</div>
+        <div class="stat__label">Livraison rapide</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PRODUITS ══ -->
+<section class="section" id="produits">
+  <div class="container">
+    <div class="section-header">
+      <span class="badge badge--purple">🌫️ Notre catalogue</span>
+      <h2>Toutes nos <span class="grad-text">gammes</span></h2>
+      <p>Cliquez sur une saveur pour commander directement par WhatsApp.</p>
+    </div>
+
+    <div class="products-grid">
+
+      <!-- JNR 16K -->
+      <div class="product-card">
+        <div class="product-card__img-wrap">
+          <span class="product-card__range">Bestseller</span>
+          <img src="images/Jnr_16k_hd.png" alt="JNR 16K puff" loading="lazy" />
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__name">JNR 16K</div>
+          <div class="product-card__desc">16 000 bouffées · Recharge USB-C · Nicotine sel</div>
+          <div class="product-card__price">
+            <span class="product-card__amount">10€</span>
+            <span class="product-card__puffs">16 000 puffs</span>
+          </div>
+          <div class="flavors">
+            <div class="flavors__title">Saveurs disponibles</div>
+            <div class="flavors__list">
+              <span class="flavor-tag" data-product="JNR 16K" data-flavor="Cherry Berry">Cherry Berry</span>
+              <span class="flavor-tag" data-product="JNR 16K" data-flavor="White Peach Razz">White Peach Razz</span>
+              <span class="flavor-tag" data-product="JNR 16K" data-flavor="Blueberry Kiwi">Blueberry Kiwi</span>
+              <span class="flavor-tag" data-product="JNR 16K" data-flavor="Sour Cherry Gummy">Sour Cherry Gummy</span>
+              <span class="flavor-tag" data-product="JNR 16K" data-flavor="Green Apple Peach Pear">Green Apple Peach Pear</span>
+              <span class="flavor-tag" data-product="JNR 16K" data-flavor="Watermelon">Watermelon</span>
+              <span class="flavors__more">+ d'autres disponibles</span>
+            </div>
+          </div>
+          <div class="product-card__cta">
+            <a href="https://wa.me/33760342425?text=Bonjour%20AlloShop%20!%20Je%20voudrais%20une%20JNR%2016K.%20Quelles%20saveurs%20avez-vous%20en%20stock%20%3F" class="btn btn--wa" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.123 1.531 5.854L.057 23.428a.5.5 0 00.609.61l5.627-1.474A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.943 9.943 0 01-5.061-1.378l-.361-.214-3.742.981.998-3.648-.236-.375A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+              Commander · 10€
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- JNR 23K -->
+      <div class="product-card">
+        <div class="product-card__img-wrap">
+          <span class="product-card__range">Nouveauté</span>
+          <img src="images/Jnr_23k_hd.webp" alt="JNR 23K puff" loading="lazy" />
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__name">JNR 23K</div>
+          <div class="product-card__desc">23 000 bouffées · Recharge USB-C · Affichage LED</div>
+          <div class="product-card__price">
+            <span class="product-card__amount">12€</span>
+            <span class="product-card__puffs">23 000 puffs</span>
+          </div>
+          <div class="flavors">
+            <div class="flavors__title">Saveurs disponibles</div>
+            <div class="flavors__list">
+              <span class="flavor-tag" data-product="JNR 23K" data-flavor="Strawberry Ice">Strawberry Ice</span>
+              <span class="flavor-tag" data-product="JNR 23K" data-flavor="Cherry Cola">Cherry Cola</span>
+              <span class="flavor-tag" data-product="JNR 23K" data-flavor="Blueberry Raspberry Cherry">Blueberry Raspberry Cherry</span>
+              <span class="flavor-tag" data-product="JNR 23K" data-flavor="Watermelon Bubblegum">Watermelon Bubblegum</span>
+              <span class="flavors__more">+ d'autres disponibles</span>
+            </div>
+          </div>
+          <div class="product-card__cta">
+            <a href="https://wa.me/33760342425?text=Bonjour%20AlloShop%20!%20Je%20voudrais%20une%20JNR%2023K.%20Quelles%20saveurs%20avez-vous%20en%20stock%20%3F" class="btn btn--wa" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.123 1.531 5.854L.057 23.428a.5.5 0 00.609.61l5.627-1.474A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.943 9.943 0 01-5.061-1.378l-.361-.214-3.742.981.998-3.648-.236-.375A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+              Commander · 12€
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- JNR 42K -->
+      <div class="product-card" style="border-color:rgba(245,158,11,0.2)">
+        <div class="product-card__img-wrap">
+          <span class="product-card__range" style="color:var(--gold);border-color:rgba(245,158,11,0.3)">Premium</span>
+          <img src="images/jnr_42k_hd.webp" alt="JNR 42K puff" loading="lazy" />
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__name">JNR 42K</div>
+          <div class="product-card__desc">42 000 bouffées · Recharge USB-C · Mesh Coil Pro</div>
+          <div class="product-card__price">
+            <span class="product-card__amount">15€</span>
+            <span class="product-card__puffs">42 000 puffs</span>
+          </div>
+          <div class="flavors">
+            <div class="flavors__title">Saveurs disponibles</div>
+            <div class="flavors__list">
+              <span class="flavor-tag" data-product="JNR 42K" data-flavor="Mixed Berry">Mixed Berry</span>
+              <span class="flavor-tag" data-product="JNR 42K" data-flavor="Tropical Fruit">Tropical Fruit</span>
+              <span class="flavor-tag" data-product="JNR 42K" data-flavor="Watermelon Ice">Watermelon Ice</span>
+              <span class="flavors__more">+ d'autres disponibles</span>
+            </div>
+          </div>
+          <div class="product-card__cta">
+            <a href="https://wa.me/33760342425?text=Bonjour%20AlloShop%20!%20Je%20voudrais%20une%20JNR%2042K.%20Quelles%20saveurs%20avez-vous%20en%20stock%20%3F" class="btn btn--wa" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.123 1.531 5.854L.057 23.428a.5.5 0 00.609.61l5.627-1.474A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.943 9.943 0 01-5.061-1.378l-.361-.214-3.742.981.998-3.648-.236-.375A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+              Commander · 15€
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 40K Razzbar -->
+      <div class="product-card">
+        <div class="product-card__img-wrap">
+          <span class="product-card__range">Top Saveurs</span>
+          <img src="images/razzbar_40k_hd.jpg" alt="40K Razzbar puff" loading="lazy" />
+        </div>
+        <div class="product-card__body">
+          <div class="product-card__name">40K Razzbar</div>
+          <div class="product-card__desc">40 000 bouffées · Recharge USB-C · Design unique</div>
+          <div class="product-card__price">
+            <span class="product-card__amount">15€</span>
+            <span class="product-card__puffs">40 000 puffs</span>
+          </div>
+          <div class="flavors">
+            <div class="flavors__title">Saveurs disponibles</div>
+            <div class="flavors__list">
+              <span class="flavor-tag" data-product="40K Razzbar" data-flavor="Green Apple Peach Pear">Green Apple Peach Pear</span>
+              <span class="flavor-tag" data-product="40K Razzbar" data-flavor="Lush Ice">Lush Ice</span>
+              <span class="flavors__more">+ d'autres disponibles</span>
+            </div>
+          </div>
+          <div class="product-card__cta">
+            <a href="https://wa.me/33760342425?text=Bonjour%20AlloShop%20!%20Je%20voudrais%20une%20Razzbar%2040K.%20Quelles%20saveurs%20avez-vous%20en%20stock%20%3F" class="btn btn--wa" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.123 1.531 5.854L.057 23.428a.5.5 0 00.609.61l5.627-1.474A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.943 9.943 0 01-5.061-1.378l-.361-.214-3.742.981.998-3.648-.236-.375A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+              Commander · 15€
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ HOW TO ORDER ══ -->
+<section class="section how-to">
+  <div class="container">
+    <div class="section-header">
+      <span class="badge badge--purple">📦 Simple & rapide</span>
+      <h2>Commander en <span class="grad-text">3 étapes</span></h2>
+      <p>Pas de compte, pas de carte bancaire. Juste WhatsApp.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step__num">1</div>
+        <div class="step__title">Choisissez votre puff</div>
+        <p class="step__desc">Parcourez le catalogue, cliquez sur la saveur ou la gamme qui vous intéresse.</p>
+      </div>
+      <div class="step">
+        <div class="step__num">2</div>
+        <div class="step__title">Envoyez un message</div>
+        <p class="step__desc">WhatsApp s'ouvre directement. On vous confirme le stock et on valide votre commande.</p>
+      </div>
+      <div class="step">
+        <div class="step__num">3</div>
+        <div class="step__title">Recevez votre commande</div>
+        <p class="step__desc">Livraison rapide dans le 49 ou retrait disponible. Paiement à la livraison accepté.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ REVIEWS ══ -->
+<section class="section" id="avis">
+  <div class="container">
+    <div class="section-header">
+      <span class="badge badge--gold">⭐ Avis clients</span>
+      <h2>Ils nous font <span class="grad-text">confiance</span></h2>
+      <p>Plus de 500 clients satisfaits dans le Maine-et-Loire.</p>
+    </div>
+    <div class="reviews-grid">
+
+      <div class="review-card">
+        <div class="review-card__header">
+          <div class="review-card__author">
+            <div class="review-card__avatar">LM</div>
+            <div>
+              <div class="review-card__name">Lucas M.</div>
+              <div class="review-card__date">Il y a 3 jours</div>
+            </div>
+          </div>
+          <div class="stars">★★★★★</div>
+        </div>
+        <p class="review-card__text">Commande reçue le lendemain, la JNR 42K saveur Mixed Berry est incroyable. Prix imbattables dans le coin, je recommande à 100%.</p>
+        <span class="review-card__product">🌫️ JNR 42K — Mixed Berry</span>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card__header">
+          <div class="review-card__author">
+            <div class="review-card__avatar" style="background:linear-gradient(135deg,#ec4899,#f97316)">SK</div>
+            <div>
+              <div class="review-card__name">Sarah K.</div>
+              <div class="review-card__date">Il y a 1 semaine</div>
+            </div>
+          </div>
+          <div class="stars">★★★★★</div>
+        </div>
+        <p class="review-card__text">La Cherry Berry 16K c'est ma préférée, j'en commande toutes les deux semaines. Réponse rapide sur WhatsApp, service au top !</p>
+        <span class="review-card__product">🌫️ JNR 16K — Cherry Berry</span>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card__header">
+          <div class="review-card__author">
+            <div class="review-card__avatar" style="background:linear-gradient(135deg,#22d3ee,#3b82f6)">KB</div>
+            <div>
+              <div class="review-card__name">Kévin B.</div>
+              <div class="review-card__date">Il y a 2 semaines</div>
+            </div>
+          </div>
+          <div class="stars">★★★★★</div>
+        </div>
+        <p class="review-card__text">Réponse rapide, livraison soignée. La Razzbar Lush Ice est dingue, goût ultra frais. Fidèle client depuis le début.</p>
+        <span class="review-card__product">🌫️ 40K Razzbar — Lush Ice</span>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card__header">
+          <div class="review-card__author">
+            <div class="review-card__avatar" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">ED</div>
+            <div>
+              <div class="review-card__name">Emma D.</div>
+              <div class="review-card__date">Il y a 3 semaines</div>
+            </div>
+          </div>
+          <div class="stars">★★★★★</div>
+        </div>
+        <p class="review-card__text">Enfin une boutique sérieuse dans le 49. La 42K vaut largement le prix, elle tient beaucoup plus longtemps que prévu. Je reviens !</p>
+        <span class="review-card__product">🌫️ JNR 42K — Watermelon Ice</span>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card__header">
+          <div class="review-card__author">
+            <div class="review-card__avatar" style="background:linear-gradient(135deg,#10b981,#22d3ee)">TG</div>
+            <div>
+              <div class="review-card__name">Thomas G.</div>
+              <div class="review-card__date">Il y a 1 mois</div>
+            </div>
+          </div>
+          <div class="stars">★★★★★</div>
+        </div>
+        <p class="review-card__text">La Watermelon Bubblegum 23K, c'est ma nouvelle addiction. Goût incroyable, duré plus de 2 semaines. Alloshop les meilleurs fr.</p>
+        <span class="review-card__product">🌫️ JNR 23K — Watermelon Bubblegum</span>
+      </div>
+
+      <div class="review-card">
+        <div class="review-card__header">
+          <div class="review-card__author">
+            <div class="review-card__avatar" style="background:linear-gradient(135deg,#a855f7,#ec4899)">MR</div>
+            <div>
+              <div class="review-card__name">Manon R.</div>
+              <div class="review-card__date">Il y a 1 mois</div>
+            </div>
+          </div>
+          <div class="stars">★★★★★</div>
+        </div>
+        <p class="review-card__text">Super service, très réactif sur WhatsApp. J'ai commandé la JNR 16K Sour Cherry Gummy, franchement au top. Prix au niveau du marché ou en dessous.</p>
+        <span class="review-card__product">🌫️ JNR 16K — Sour Cherry Gummy</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section class="section faq">
+  <div class="container">
+    <div class="section-header">
+      <span class="badge badge--purple">❓ Questions fréquentes</span>
+      <h2>On répond à <span class="grad-text">tout</span></h2>
+    </div>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-item__q">Comment passer une commande ?<span class="faq-item__icon">+</span></button>
+        <div class="faq-item__a">Simple : cliquez sur le bouton WhatsApp de la gamme qui vous intéresse. Un message pré-rempli s'ouvre. On vous confirme le stock disponible et on valide votre commande en quelques minutes.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-item__q">Quels sont les délais de livraison ?<span class="faq-item__icon">+</span></button>
+        <div class="faq-item__a">Livraison sous 24 à 48h dans tout le Maine-et-Loire. Le retrait est également disponible sur Angers et Saumur. On vous précise les modalités directement sur WhatsApp.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-item__q">Quels modes de paiement acceptez-vous ?<span class="faq-item__icon">+</span></button>
+        <div class="faq-item__a">Paiement à la livraison accepté (espèces). Virement et Lydia/Paylib également possibles. Tout se règle facilement, on vous explique lors de la commande.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-item__q">Vous avez d'autres saveurs que celles listées ?<span class="faq-item__icon">+</span></button>
+        <div class="faq-item__a">Oui, le catalogue présenté est un exemple. Nous avons régulièrement de nouvelles saveurs en stock. Contactez-nous sur WhatsApp pour connaître les disponibilités complètes du moment.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-item__q">La vente est-elle réservée aux majeurs ?<span class="faq-item__icon">+</span></button>
+        <div class="faq-item__a">Oui, conformément à l'article L.3513-4 du Code de la santé publique, la vente de produits à base de nicotine est strictement réservée aux personnes âgées de 18 ans et plus. Une pièce d'identité peut être demandée.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA FINAL ══ -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-section__content">
+      <span class="badge badge--purple">🚀 Prêt à commander ?</span>
+      <h2>Votre prochaine<br><span class="grad-text">puff préférée</span><br>est à un message.</h2>
+      <p>Réponse garantie en moins de 30 minutes. Livraison rapide dans le 49.</p>
+      <a href="https://wa.me/33760342425?text=Bonjour%20AlloShop%20!%20Je%20voudrais%20commander%20une%20puff.%20Qu'avez-vous%20en%20stock%20actuellement%20%3F" class="btn btn--wa" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.123 1.531 5.854L.057 23.428a.5.5 0 00.609.61l5.627-1.474A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.943 9.943 0 01-5.061-1.378l-.361-.214-3.742.981.998-3.648-.236-.375A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        Contacter sur WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="footer__brand">ALLO<em>SHOP</em></div>
+  <div class="footer__links">
+    <a href="#produits">Catalogue</a>
+    <a href="#avis">Avis clients</a>
+    <a href="https://www.instagram.com/alloshop.49/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://wa.me/33760342425" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+  <p class="footer__legal">© 2026 AlloShop · Angers · Saumur · Maine-et-Loire<br>Vente réservée aux personnes majeures (+18 ans) · Art. L.3513-4 CSP<br>Ce produit contient de la nicotine, substance addictive.</p>
+</footer>
+
+<!-- ══ WHATSAPP STICKY ══ -->
+<a href="https://wa.me/33760342425?text=Bonjour%20AlloShop%20!" class="wa-sticky" id="wa-sticky" target="_blank" rel="noopener" aria-label="Commander sur WhatsApp">
+  <svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.557 4.123 1.531 5.854L.057 23.428a.5.5 0 00.609.61l5.627-1.474A11.95 11.95 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.943 9.943 0 01-5.061-1.378l-.361-.214-3.742.981.998-3.648-.236-.375A9.96 9.96 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+</a>
+
+<script>
+(function () {
+  /* ── Age Gate ── */
+  const gate = document.getElementById('age-gate');
+  const strip = document.getElementById('nico-strip');
+  const main = document.querySelectorAll('nav, .hero, .stats-bar, section, footer, .wa-sticky');
+
+  function unlock() {
+    gate.classList.add('hidden');
+    strip.classList.add('visible');
+    sessionStorage.setItem('age_ok', '1');
+  }
+
+  if (sessionStorage.getItem('age_ok')) {
+    gate.classList.add('hidden');
+    strip.classList.add('visible');
+  }
+
+  document.getElementById('age-yes').addEventListener('click', unlock);
+  document.getElementById('age-no').addEventListener('click', function () {
+    document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;min-height:100dvh;background:#07070f;font-family:Inter,sans-serif;color:#64748b;text-align:center;padding:40px"><div><p style="font-size:48px;margin-bottom:24px">🔞</p><p style="font-size:18px;font-weight:600;color:#f1f5f9;margin-bottom:12px">Accès refusé</p><p>Ce site est réservé aux personnes majeures.</p></div></div>';
+  });
+
+  /* ── Nav scroll ── */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', function () {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+    document.getElementById('wa-sticky').classList.toggle('visible', window.scrollY > 300);
+  }, { passive: true });
+
+  /* ── Flavor tags → WhatsApp ── */
+  document.querySelectorAll('.flavor-tag').forEach(function (tag) {
+    tag.addEventListener('click', function () {
+      var product = encodeURIComponent(tag.dataset.product);
+      var flavor = encodeURIComponent(tag.dataset.flavor);
+      var msg = 'Bonjour%20AlloShop%20!%20Je%20voudrais%20commander%20une%20' + product + '%20saveur%20' + flavor + '.';
+      window.open('https://wa.me/33760342425?text=' + msg, '_blank', 'noopener');
+    });
+    tag.style.cursor = 'pointer';
+  });
+
+  /* ── FAQ accordion ── */
+  document.querySelectorAll('.faq-item__q').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.faq-item');
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function (i) { i.classList.remove('open'); });
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+})();
+</script>
 </body>
 </html>
